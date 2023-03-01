@@ -1,22 +1,29 @@
 @php( $blogPosts = App\models\BlogPost::all())
 @php( $users = App\models\user::all())
 
-<h1>Welcome, {{$user["username"]}}</h1>
+<link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}">
 
 @include('errors')
-<form action="/createPost" method = "POST">
-    @csrf
-    <input type="submit">
-</form>
 
-<a href="/">Log out</a>
+<header>
+    <div>
+        <h1>{{$user["username"]}}</h1>
+        <form action="/createPost" method = "POST">
+            @csrf
+            <input class = "createPostButton" type="submit" value = "Create post">
+        </form>
+    </div>
+    <div>
+        <a href="/">Log out</a>
+    </div>
+</header>
 
-<div>
+<div class = "blogPostsContainer">
     @foreach($blogPosts as $post)
     <div class = "blogPost">
         <h1>{{$post->title}}</h1>
-        <p>By: {{ App\models\user::find($post->user_id)->username }}</p>
-        <p>{{$post->content}}</p>
+        <p class = "author">By: {{ App\models\user::find($post->user_id)->username }}</p>
+        <p class = "content">{{$post->content}}</p>
     </div>
     @endforeach
 </div>
