@@ -9,7 +9,7 @@
     <input type="submit">
 </form>
 
-<a href="/">Log out</a>
+<a href="/logout">Log out</a>
 
 <div>
     @foreach($blogPosts as $post)
