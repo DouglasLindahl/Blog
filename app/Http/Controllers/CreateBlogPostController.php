@@ -12,7 +12,7 @@ class CreateBlogPostController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $blogPost = $request->only(["id", "title", "content"]);
+        $blogPost = $request->only(["user_id", "title", "content"]);
         BlogPost::create($blogPost);
         return redirect()->intended('dashboard');
     }

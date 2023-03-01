@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CreateBlogPostController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -21,7 +22,9 @@ Route::post('login', LoginController::class);
 
 Route::get('dashboard', DashboardController::class)->middleware('auth');
 
-Route::get('createPost', function () {
+Route::post('createBlogPost', CreateBlogPostController::class)->middleware('auth');
+
+Route::post('createPost', function () {
     return view('createPost');
 });
 
