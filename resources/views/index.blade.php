@@ -9,8 +9,8 @@
 
     <div class="login-form">
     <div>
-        <label for="email">Email</label>
-        <input name="email" id="email" type="email" />
+        <label for="username">Username</label>
+        <input name="username" id="username" type="text" />
     </div>
     <div>
         <label for="password">Password</label>

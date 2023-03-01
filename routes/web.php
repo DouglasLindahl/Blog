@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 
@@ -14,9 +15,19 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-Route::view('/', 'index')->name('index')->middleware('guest');
+// Route::view('/', 'index')->name('index')->middleware('guest');
 
 Route::post('login', LoginController::class);
+
+Route::get('dashboard', DashboardController::class)->middleware('auth');
+
+Route::get('createPost', function () {
+    return view('createPost');
+});
+
+Route::get('/', function () {
+    return view('index');
+});
 
 /* Route::get('/', function () {
     return view('login');
