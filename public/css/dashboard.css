@@ -1,7 +1,9 @@
 *{
     margin: 0;
     padding: 0;
-    color: rgb(42, 42, 42);
+}
+body{
+    background-color: rgb(28, 32, 48);
 }
 .blogPostsContainer{
     width: 100%;
@@ -10,19 +12,20 @@
     justify-content: flex-start;
     align-items: center;
     gap: 20px;
+    color: rgb(42, 42, 42);
 }
 .blogPost{
     background-color: rgb(237, 121, 195);
     padding: 30px;
     width: 80%;
     border-radius: 10px;
-    border: 3px solid rgb(42, 42, 42);
 }
 header{
     padding: 5px 10px 5px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: white;
 }
 header div{
     display: flex;

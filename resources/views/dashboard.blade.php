@@ -17,13 +17,14 @@
         <a href="/logout">Log out</a>
     </div>
 </header>
-
-<div class = "blogPostsContainer">
-    @foreach($blogPosts as $post)
-    <div class = "blogPost">
-        <h1>{{$post->title}}</h1>
-        <p class = "author">By: {{ App\models\user::find($post->user_id)->username }}</p>
-        <p class = "content">{{$post->content}}</p>
+<body>
+    <div class = "blogPostsContainer">
+        @foreach($blogPosts as $post)
+        <div class = "blogPost">
+            <h1>{{$post->title}}</h1>
+            <p class = "author">By: {{ App\models\user::find($post->user_id)->username }}</p>
+            <p class = "content">{{$post->content}}</p>
+        </div>
+        @endforeach
     </div>
-    @endforeach
-</div>
+</body>

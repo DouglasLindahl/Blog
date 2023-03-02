@@ -1,23 +1,29 @@
-{{-- <link rel="stylesheet" href="{{ asset('./css/app.css') }}"> --}}
-<form method="post" action="/login">
-    @csrf
+<link rel="stylesheet" href="{{ asset('./css/index.css') }}">
 
-<div class="header">
-    <h1>Blogg</h1>
-    <button type="button">Log in</button>
-</div>
-
-    <div class="login-form">
-    <div>
-        <label for="username">Username</label>
-        <input name="username" id="username" type="text" />
+<body>
+    <div class="header">
+        <button class = "openLoginFormButton" type="button">Log in</button>
     </div>
-    <div>
-        <label for="password">Password</label>
-        <input name="password" id="password" type="password" />
-    </div>
-    <button type="submit">Login</button>
-</div>
-</form>
+    <form class = "loginForm hidden" method="post" action="/login">
+        @csrf
 
-@include('errors')
+        <div class="login-form">
+        <div>
+            <label for="username">Username</label>
+            <input name="username" id="username" type="text" />
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input name="password" id="password" type="password" />
+        </div>
+        <button type="submit">Login</button>
+    </div>
+    </form>
+    <form class = "registerButton hidden" action="/createAccount">
+        <div>
+            <button type = "submit">Register account</button>
+        </div>
+    </form>
+    @include('errors')
+    <script type="text/javascript" src="{{ URL::asset('./js/index.js') }}"></script>
+</body>
