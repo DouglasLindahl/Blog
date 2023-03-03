@@ -37,7 +37,7 @@ Route::post('createPost', function () {
 
 
 Route::post('registerAccount', RegisterAccountController::class);
-Route::get('register', function () {
+Route::post('register', function () {
     return view('register');
 });
 

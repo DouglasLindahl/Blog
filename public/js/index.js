@@ -1,9 +1,14 @@
-const loginForm = document.querySelector(".loginForm");
-const openLoginFormButton = document.querySelector(".openLoginFormButton")
-const registerButton = document.querySelector(".registerButton");
+const errorSection = document.querySelector(".errors");
 
-openLoginFormButton.addEventListener("click", () =>{
-    loginForm.classList.remove("hidden");
-    openLoginFormButton.classList.add("hidden");
-    registerButton.classList.remove("hidden");
-})
+if(errorSection.firstChild){
+    setTimeout(() => {
+        errorSection.style = `top: ${-errorSection.offsetHeight}`;
+        setTimeout(() => {
+            while(errorSection.firstChild)
+            {
+                errorSection.removeChild(errorSection.firstChild);
+            }
+        }, 1000)
+    }, 10000);
+}
+

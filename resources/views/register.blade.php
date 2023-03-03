@@ -9,3 +9,9 @@
     <input type="password" name = "password" placeholder="************">
     <input type="submit" value = "Register account">
 </form>
+<form class = "loginButton" action="/" method = "get">
+    <div>
+        @csrf
+        <button type = "submit">Login</button>
+    </div>
+</form>
