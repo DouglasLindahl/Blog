@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\RegisterAccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,17 @@ Route::get('dashboard', DashboardController::class)->middleware('auth');
 
 Route::get('logout', LogoutController::class);
 
-Route::post('createBlogPost', CreateBlogPostController::class)->middleware('auth');
 
+
+Route::post('createBlogPost', CreateBlogPostController::class)->middleware('auth');
 Route::post('createPost', function () {
     return view('createPost');
+});
+
+
+Route::post('registerAccount', RegisterAccountController::class);
+Route::get('register', function () {
+    return view('register');
 });
 
 /* Route::get('/', function () {

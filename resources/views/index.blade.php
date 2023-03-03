@@ -19,8 +19,9 @@
         <button type="submit">Login</button>
     </div>
     </form>
-    <form class = "registerButton hidden" action="/createAccount">
+    <form class = "registerButton hidden" action="/register" method = "get">
         <div>
+            @csrf
             <button type = "submit">Register account</button>
         </div>
     </form>
