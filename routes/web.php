@@ -2,10 +2,12 @@
 
 use App\Http\Controllers\CreateBlogPostController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GoToMyPageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterAccountController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,10 +37,14 @@ Route::post('createPost', function () {
     return view('createPost');
 });
 
-
 Route::post('registerAccount', RegisterAccountController::class);
 Route::post('register', function () {
     return view('register');
+});
+
+Route::post('myPage', GoToMyPageController::class)->middleware('auth');
+Route::post('goToMyPage', function () {
+    return view('myPage');
 });
 
 /* Route::get('/', function () {

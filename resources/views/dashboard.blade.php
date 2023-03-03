@@ -14,6 +14,12 @@
         </form>
     </div>
     <div>
+        <form action="myPage" method="post">
+            @csrf
+            <input type="submit">
+        </form>
+    </div>
+    <div>
         <a href="/logout">Log out</a>
     </div>
 </header>
