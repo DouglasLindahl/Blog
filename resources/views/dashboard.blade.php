@@ -22,7 +22,12 @@
         @foreach($blogPosts as $post)
         <div class = "blogPost">
             <h1>{{$post->title}}</h1>
-            <p class = "author">By: {{ App\models\user::find($post->user_id)->username }}</p>
+            @if(!App\models\user::find($post->user_id))
+                <p class = "author"> By: [Deleted]</p>
+            @else
+                <p class = "author">By: {{ App\models\user::find($post->user_id)->username }}</p>
+            @endif
+
             <p class = "content">{{$post->content}}</p>
         </div>
         @endforeach
