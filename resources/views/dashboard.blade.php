@@ -16,7 +16,7 @@
     <div>
         <form action="myPage" method="post">
             @csrf
-            <input type="submit">
+            <input type="submit" value = "My page">
         </form>
     </div>
     <div>

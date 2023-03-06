@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CreateBlogPostController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DeletePostController;
 use App\Http\Controllers\GoToMyPageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
@@ -41,6 +42,8 @@ Route::post('registerAccount', RegisterAccountController::class);
 Route::post('register', function () {
     return view('register');
 });
+
+Route::patch('post/{blogPost}/delete', DeletePostController::class)->Middleware('auth');
 
 Route::post('myPage', GoToMyPageController::class)->middleware('auth');
 Route::post('goToMyPage', function () {
