@@ -1,7 +1,11 @@
-@php( $blogPosts = App\models\BlogPost::all())
+@php( $blogPosts = App\models\BlogPost::orderByDesc('created_at')->get())
+{{-- @php( $blogPosts = App\models\BlogPost::join('users', 'blog_posts.user_id', '=', 'users.id')->where('users.username', 'like', '%' . "User search" . '%')->get()) --}}
+
+
 @php( $users = App\models\user::all())
 
-<link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}">
+
+{{-- <link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}"> --}}
 
 @include('errors')
 
