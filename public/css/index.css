@@ -10,6 +10,12 @@ body{
     justify-content: center;
     align-items: center;
 }
+h1{
+    font-size: 46px;
+}
+p{
+    font-size: 26px;
+}
 .errors{
     transition: .5s ease;
     color: white;

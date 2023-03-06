@@ -12,6 +12,6 @@
 <form class = "loginButton" action="/" method = "get">
     <div>
         @csrf
-        <button type = "submit">Login</button>
+        <button type = "submit">Back</button>
     </div>
 </form>

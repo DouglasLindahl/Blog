@@ -43,9 +43,10 @@ Route::post('register', function () {
     return view('register');
 });
 
-Route::patch('post/{blogPost}/delete', DeletePostController::class)->Middleware('auth');
+Route::patch('post/{blogPost}/delete', [DeletePostController::class, '__invoke'])->Middleware('auth');
 
-Route::post('myPage', GoToMyPageController::class)->middleware('auth');
+
+Route::get('myPage', GoToMyPageController::class)->middleware('auth');
 Route::post('goToMyPage', function () {
     return view('myPage');
 });
