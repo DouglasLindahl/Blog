@@ -18,6 +18,31 @@
     </div>
 </header>
 <body>
+
+    <section class="filter">
+        <div class="search">
+        <label for="" class="form-label">Search: </label>
+        <input type="text" class="form-control" placeholder="Keyword...">
+    </div>
+
+    <div class="author">
+        <label for="" class="form-label">Author: </label>
+        <select name="" class="form-select">
+        <option value="">Select author</option>
+        <option value="">Douglas</option>
+        <option value="">Filip</option>
+        </select>
+    </div>
+
+    <div class="sort">
+        <label for="" class="form-label">Sort by: </label>
+        <select name="" class="form-select">
+        <option value="">Newest</option>
+        <option value="">Oldest</option>
+        </select>
+    </div>
+</section>
+
     <div class = "blogPostsContainer">
         @foreach($blogPosts as $post)
         <div class = "blogPost">
