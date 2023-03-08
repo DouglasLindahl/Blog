@@ -1,6 +1,5 @@
-@php( $blogPosts = App\models\BlogPost::orderByDesc('created_at')->get())
-{{-- @php( $blogPosts = App\models\BlogPost::join('users', 'blog_posts.user_id', '=', 'users.id')->where('users.username', 'like', '%' . "User search" . '%')->get()) --}}
-
+@php( $blogPosts = $sort)
+{{-- @php( $blogPosts = App\models\BlogPost::orderByDesc('created_at')->get()) --}}
 
 @php( $users = App\models\user::all())
 
@@ -17,31 +16,35 @@
         </form>
     </div>
 </header>
+
 <body>
+    <form action="sortPosts" method = "POST">
+        @csrf
+        <section class="filter">
+            <div class="search">
+                <label for="search" class="form-label">Search: </label>
+                <input type="text" class="form-control" name = "search" placeholder="Keyword...">
+            </div>
 
-    <section class="filter">
-        <div class="search">
-        <label for="" class="form-label">Search: </label>
-        <input type="text" class="form-control" placeholder="Keyword...">
-    </div>
+            <div class="author">
+                <label for="search" class="form-label">Author: </label>
+                <input type="text" class="form-control" name = "author" placeholder="Author...">
+            </div>
 
-    <div class="author">
-        <label for="" class="form-label">Author: </label>
-        <select name="" class="form-select">
-        <option value="">Select author</option>
-        <option value="">Douglas</option>
-        <option value="">Filip</option>
-        </select>
-    </div>
-
-    <div class="sort">
-        <label for="" class="form-label">Sort by: </label>
-        <select name="" class="form-select">
-        <option value="">Newest</option>
-        <option value="">Oldest</option>
-        </select>
-    </div>
-</section>
+            <div class="sort">
+                <label for="" class="form-label">Sort by: </label>
+                <select name="newest" class="form-select">
+                <option value="new">Newest</option>
+                <option value="old">Oldest</option>
+                </select>
+            </div>
+        </section>
+        <input type="submit" value = "Sort">
+    </form>
+    <form action="sortPosts" method = "POST">
+        @csrf
+        <input type="submit" value = "Reset">
+    </form>
 
     <div class = "blogPostsContainer">
         @foreach($blogPosts as $post)

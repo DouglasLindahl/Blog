@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterAccountController;
+use App\Http\Controllers\SortPostsController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -28,6 +29,7 @@ Route::view('/', 'index')->name('login')->middleware('guest');
 Route::post('login', LoginController::class);
 
 Route::get('dashboard', DashboardController::class)->middleware('auth');
+Route::post('sortPosts', SortPostsController::class)->middleware('auth');
 
 Route::get('logout', LogoutController::class);
 
