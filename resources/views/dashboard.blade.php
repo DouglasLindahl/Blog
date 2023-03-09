@@ -1,3 +1,15 @@
+
+
+@if(!isset($sort))
+@php ($sort = App\models\BlogPost::orderBy('created_at', 'desc')->get())
+
+@endif
+
+
+
+
+
+
 @php( $blogPosts = $sort)
 {{-- @php( $blogPosts = App\models\BlogPost::orderByDesc('created_at')->get()) --}}
 
