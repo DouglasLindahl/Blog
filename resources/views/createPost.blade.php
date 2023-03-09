@@ -1,9 +1,17 @@
-<form action="createBlogPost" method = "POST">
-    @csrf
-    <label for="title">Title</label>
-    <input type="text" name = "title">
-    <label for="content">Content</label>
-    <textarea name="content" id="content" cols="30" rows="10"></textarea>
-    <input type="hidden" name = "user_id" value = <?=Auth::user()->id?>>
-    <input type="submit" value = "post content">
-</form>
+<link rel="stylesheet" href="{{ asset('/css/createPost.css') }}">
+
+<body>
+    <form class="createPostForm" action="createBlogPost" method="POST">
+        @csrf
+        <div class="formGroup">
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="title">
+        </div>
+        <div class="formGroup">
+          <label for="content">Content:</label>
+          <textarea name="content" id="content" cols="30" rows="10"></textarea>
+        </div>
+        <input type="hidden" name="user_id" value="<?=Auth::user()->id?>">
+        <input class="createPostButton" type="submit" value="Post Content">
+      </form>
+</body>

@@ -28,33 +28,35 @@
 </header>
 
 <body>
-    <form action="sortPosts" method = "POST">
-        @csrf
-        <section class="filter">
-            <div class="search">
-                <label for="search" class="form-label">Search: </label>
-                <input type="text" class="form-control" name = "search" placeholder="Keyword...">
-            </div>
+    <div class = "sortContainer">
+        <form class = "sortPosts" action="sortPosts" method = "POST">
+            @csrf
+            <section class="filter">
+                <div class="search">
+                    <label for="search" class="form-label">Search: </label>
+                    <input type="text" class="form-control" name = "search" placeholder="Keyword...">
+                </div>
 
-            <div class="author">
-                <label for="search" class="form-label">Author: </label>
-                <input type="text" class="form-control" name = "author" placeholder="Author...">
-            </div>
+                <div class="author">
+                    <label for="search" class="form-label">Author: </label>
+                    <input type="text" class="form-control" name = "author" placeholder="Author...">
+                </div>
 
-            <div class="sort">
-                <label for="" class="form-label">Sort by: </label>
-                <select name="newest" class="form-select">
-                <option value="new">Newest</option>
-                <option value="old">Oldest</option>
-                </select>
-            </div>
-        </section>
-        <input type="submit" value = "Sort">
-    </form>
-    <form action="sortPosts" method = "POST">
-        @csrf
-        <input type="submit" value = "Reset">
-    </form>
+                <div class="sort">
+                    <label for="" class="form-label">Sort by: </label>
+                    <select name="newest" class="form-select">
+                    <option value="new">Newest</option>
+                    <option value="old">Oldest</option>
+                    </select>
+                </div>
+            </section>
+            <input type="submit" value = "Sort">
+        </form>
+        <form action="resetSortButton" method = "POST">
+            @csrf
+            <input type="submit" value = "Reset">
+        </form>
+    </div>
 
     <div class = "blogPostsContainer">
         @foreach($blogPosts as $post)

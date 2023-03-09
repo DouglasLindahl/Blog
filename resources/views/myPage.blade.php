@@ -4,14 +4,14 @@
 
 
 <header>
-    <div>
+    <div class = "headerInfo">
         <h1>{{$user["username"]}}</h1>
         <form action="/createPost" method = "POST">
             @csrf
             <input class = "createPostButton" type="submit" value = "Create post">
         </form>
     </div>
-    <div>
+    <div class = "logoutButton">
         <a href="/logout">Log out</a>
     </div>
     <div>

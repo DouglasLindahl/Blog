@@ -1,0 +1,50 @@
+body{
+    background-color: #2b2a2a;
+    color: white;
+}
+.createPostForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 800px;
+  }
+
+  label {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  input[type="text"],
+  textarea {
+    font-size: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: #f5f5f5;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  input[type="submit"] {
+    background-color: rgb(237, 121, 195);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 1rem;
+  }
+
+  input[type="submit"]:hover {
+    background-color: rgb(237, 121, 195);
+  }
