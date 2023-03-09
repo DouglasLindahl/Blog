@@ -1,8 +1,7 @@
-
+<link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}">
 
 @if(!isset($sort))
 @php ($sort = App\models\BlogPost::orderBy('created_at', 'desc')->get())
-
 @endif
 
 
@@ -11,12 +10,11 @@
 
 
 @php( $blogPosts = $sort)
-{{-- @php( $blogPosts = App\models\BlogPost::orderByDesc('created_at')->get()) --}}
+
 
 @php( $users = App\models\user::all())
 
 
-{{-- <link rel="stylesheet" href="{{ asset('/css/dashboard.css') }}"> --}}
 
 @include('errors')
 
@@ -69,6 +67,15 @@
             @endif
 
             <p class = "content">{{$post->content}}</p>
+            <p class = "likes">{{$post->likes}}</p>
+
+            <form action="post/{{ $post->id }}/like" method="POST">
+                @csrf
+                @method('patch')
+                <input type="hidden" name="post_id" value="{{ $post->id }}">
+                <input type="submit" value="Like">
+            </form>
+
         </div>
         @endforeach
     </div>

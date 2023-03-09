@@ -4,6 +4,7 @@ use App\Http\Controllers\CreateBlogPostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DeletePostController;
 use App\Http\Controllers\GoToMyPageController;
+use App\Http\Controllers\LikePostController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
@@ -47,6 +48,7 @@ Route::post('register', function () {
 
 Route::patch('post/{blogPost}/delete', [DeletePostController::class, '__invoke'])->Middleware('auth');
 
+Route::patch('post/{blogPost}/like', [LikePostController::class, '__invoke'])->Middleware('auth');
 
 Route::get('myPage', GoToMyPageController::class)->middleware('auth');
 Route::post('goToMyPage', function () {
