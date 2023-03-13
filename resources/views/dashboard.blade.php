@@ -71,6 +71,12 @@
             <p class = "content">{{$post->content}}</p>
             <p class = "likes">{{$post->likes}}</p>
 
+            {{ $post->likes }} likes
+
+            <form method="POST" action="{{ route('posts.like', $post->id) }}">
+                @csrf
+                <button type="submit">Like</button>
+            </form>
             <form action="post/{{ $post->id }}/like" method="POST">
                 @csrf
                 @method('patch')
