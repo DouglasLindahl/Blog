@@ -52,7 +52,7 @@
             </section>
             <input type="submit" value = "Sort">
         </form>
-        <form action="resetSortButton" method = "POST">
+        <form action="resetSort" method = "POST">
             @csrf
             <input type="submit" value = "Reset">
         </form>
@@ -73,15 +73,12 @@
 
             {{ $post->likes }} likes
 
-            <form method="POST" action="{{ route('posts.like', $post->id) }}">
-                @csrf
-                <button type="submit">Like</button>
-            </form>
+
             <form action="post/{{ $post->id }}/like" method="POST">
                 @csrf
                 @method('patch')
                 <input type="hidden" name="post_id" value="{{ $post->id }}">
-                <input type="submit" value="Like">
+                <button type="submit">Like</button>
             </form>
 
         </div>

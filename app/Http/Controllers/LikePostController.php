@@ -10,11 +10,10 @@ class LikePostController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function like(blogPost $post)
+    public function __invoke(BlogPost $blogPost)
     {
-        $post->likes++;
-        $post->save();
-
-        return back();
+        $blogPost->likes += 1;
+        $blogPost->save();
+        return redirect()->intended('dashboard');
     }
 }

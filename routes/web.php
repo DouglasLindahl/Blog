@@ -31,6 +31,7 @@ Route::post('login', LoginController::class);
 
 Route::get('dashboard', DashboardController::class)->middleware('auth');
 Route::post('sortPosts', SortPostsController::class)->middleware('auth');
+Route::post('resetSort', SortPostsController::class)->middleware('auth');
 
 Route::get('logout', LogoutController::class);
 
@@ -46,7 +47,7 @@ Route::post('register', function () {
 
 Route::patch('post/{blogPost}/delete', [DeletePostController::class, '__invoke'])->Middleware('auth');
 
-Route::post('post/{blogPost}/like', [LikePostController::class, '__invoke', 'like'])->name('posts.like')->Middleware('auth');
+Route::patch('post/{blogPost}/like', [LikePostController::class, '__invoke', 'like'])->name('posts.like')->Middleware('auth');
 
 Route::get('myPage', GoToMyPageController::class)->middleware('auth');
 Route::post('goToMyPage', function () {
