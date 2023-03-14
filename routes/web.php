@@ -38,8 +38,9 @@ Route::post('createPost', function () {
     return view('createPost');
 });
 
+
 Route::post('registerAccount', RegisterAccountController::class);
-Route::post('register', function () {
+Route::get('register', function () {
     return view('register');
 });
 

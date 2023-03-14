@@ -26,7 +26,6 @@ class RegisterAccountController extends Controller
             return back()->withErrors([
                 "username" => "That username is taken"
             ])->onlyInput('username');
-            return redirect('register');
         }
     }
 }

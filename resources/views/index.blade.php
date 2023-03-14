@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="{{ asset('./css/index.css') }}">
 
 
+@include('errors')
 <body>
     <section class="errors">
-        @include('errors')
     </section>
     <header>
         <h1>Super cool blog (Extreme)</h1>
@@ -19,7 +19,7 @@
         <button type="submit">Login</button>
     </div>
     </form>
-    <form class = "registerButton" action="/register" method = "post">
+    <form class = "registerButton" action="/register" method = "get">
         <div>
             @csrf
             <button type = "submit">Register account</button>
