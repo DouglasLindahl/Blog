@@ -11,8 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            //
+        Schema::create('likes', function (Blueprint $table) {
+            $table->id();
+            $table->integer("user_id");
+            $table->integer("post_id");
         });
     }
 
@@ -21,8 +23,5 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('posts', function (Blueprint $table) {
-            $table->integer('likes')->default(0);
-        });
     }
 };

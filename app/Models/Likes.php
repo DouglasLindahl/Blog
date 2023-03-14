@@ -5,19 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BlogPost extends Model
+class Likes extends Model
 {
     use HasFactory;
 
     protected $fillable = [
+        'id',
         'user_id',
-        'title',
-        'content',
-        'likes'
+        'post_id',
     ];
-
-    function likes()
-    {
-        return $this->hasMany(Likes::class);
-    }
 }
