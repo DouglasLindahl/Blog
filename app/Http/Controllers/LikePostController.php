@@ -16,8 +16,9 @@ class LikePostController extends Controller
     {
         $like = Likes::where('user_id', 'like', $request->user_id)
             ->where('post_id', 'like', $request->post_id)
-            ->get();
-        if ($like->count() > 0) {
+            ->first();
+
+        if ($like) {
             $blogPost->likes -= 1;
             DB::table('likes')->where('id', '=', $like->id)->delete();
         } else {
@@ -25,6 +26,7 @@ class LikePostController extends Controller
             Likes::create($addLike);
             $blogPost->likes += 1;
         }
+
         $blogPost->save();
         return redirect()->intended('dashboard');
     }
