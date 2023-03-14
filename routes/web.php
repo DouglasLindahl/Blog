@@ -45,7 +45,8 @@ Route::post('register', function () {
 
 Route::patch('post/{blogPost}/delete', [DeletePostController::class, '__invoke'])->Middleware('auth');
 
-Route::patch('post/{blogPost}/like', [LikePostController::class, '__invoke', 'like'])->name('posts.like')->Middleware('auth');
+// Route::patch('post/{blogPost}/like', [LikePostController::class, '__invoke', 'like'])->name('posts.like')->Middleware('auth');
+Route::patch('post/{blogPost}/like', [LikePostController::class, '__invoke'])->Middleware('auth');
 
 Route::get('myPage', GoToMyPageController::class)->middleware('auth');
 Route::post('goToMyPage', function () {
