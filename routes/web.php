@@ -23,8 +23,6 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::view('/', 'index')->name('index')->middleware('guest');
-
 Route::view('/', 'index')->name('login')->middleware('guest');
 
 Route::post('login', LoginController::class);
