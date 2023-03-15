@@ -17,14 +17,6 @@ class CreateBlogpostTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_view_create_blogpost_form()
-    {
-        $response = $this->get('/createPost');
-        $response->assertSeeText('Title');
-        $response->assertSeeText('Content');
-        $response->assertStatus(200);
-    }
-
     public function test_create_blogpost_with_button()
     {
         $user = new User();

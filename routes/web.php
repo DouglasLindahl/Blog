@@ -55,8 +55,3 @@ Route::get('myPage', GoToMyPageController::class)->middleware('auth');
 Route::post('goToMyPage', function () {
     return view('myPage');
 });
-
-
-/* Route::get('/', function () {
-    return view('login');
-}); */
