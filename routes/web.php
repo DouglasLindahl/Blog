@@ -54,6 +54,6 @@ Route::patch('post/{blogPost}/like', [LikePostController::class, '__invoke'])->M
 
 Route::get('myPage', GoToMyPageController::class)->middleware('auth');
 
-/* Route::post('goToMyPage', function () {
+Route::post('goToMyPage', function () {
     return view('myPage');
-}); */
+});
