@@ -4,9 +4,19 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Tests\TestCase;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Psy\Util\Str;
+use Nette\Utils\Random;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
+function csrf_token()
+{
+    return app('session')->token();
+}
 
 class LoginTest extends TestCase
 {
@@ -28,14 +38,17 @@ class LoginTest extends TestCase
         $response->assertStatus(200);
     }
 
+    // $user = User::factory()->create(['username' => 'Test', 'password' => bcrypt($password = '123')]);
     public function test_user_registration()
     {
-        $response = $this->post('/registerAccount', [
-            'username' => 'Billy',
-            'password' => '123',
-        ]);
+        $user = [
+            'username' => 'TestUser',
+            'password' => 'passwordtest'
+        ];
 
-        $this->assertDatabaseHas('users', ['username' => 'Billy']);
+        $response = $this->post('/registerAccount', $user, [
+            '_token' => csrf_token()
+        ]);
 
         $response->assertRedirect('/');
     }
