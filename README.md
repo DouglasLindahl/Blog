@@ -39,6 +39,11 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
+## Blog developers
+
+* Douglas Lindahl
+* Filip Jonasson
+
 ## Code review
 
 1.
