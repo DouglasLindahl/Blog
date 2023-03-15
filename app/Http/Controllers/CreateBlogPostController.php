@@ -14,6 +14,6 @@ class CreateBlogPostController extends Controller
     {
         $blogPost = $request->only(["user_id", "title", "content"]);
         BlogPost::create($blogPost);
-        return redirect()->intended('dashboard');
+        return redirect('/dashboard');
     }
 }
