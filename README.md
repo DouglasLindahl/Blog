@@ -40,3 +40,24 @@ In order to ensure that the Laravel community is welcoming to all, please review
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
 ## Code review
+
+1.
+2.
+3.
+4.
+5.
+6.
+7.
+8.
+9.
+10.
+11.
+12.
+13.
+14.
+15.
+16.
+17
+18.
+19.
+20.
