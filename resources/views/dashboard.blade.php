@@ -49,7 +49,7 @@
             <input type="hidden" name = "user" value = {{$user}}>
             <input type="submit" value = "Sort">
         </form>
-        <form action="resetSort" method = "POST">
+        <form action="sortPosts" method = "POST">
             @csrf
             <input type="hidden" name = "user" value = {{$user}}>
             <input type="submit" value = "Reset">
