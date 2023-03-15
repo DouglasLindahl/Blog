@@ -4,11 +4,7 @@
 @php ($sort = App\models\BlogPost::orderBy('created_at', 'desc')->get())
 @endif
 
-
-
-
-
-
+@php ($user = auth()->user())
 @php( $blogPosts = $sort)
 
 
@@ -50,10 +46,12 @@
                     </select>
                 </div>
             </section>
+            <input type="hidden" name = "user" value = {{$user}}>
             <input type="submit" value = "Sort">
         </form>
         <form action="resetSort" method = "POST">
             @csrf
+            <input type="hidden" name = "user" value = {{$user}}>
             <input type="submit" value = "Reset">
         </form>
     </div>
@@ -61,27 +59,31 @@
     <div class = "blogPostsContainer">
         @foreach($blogPosts as $post)
         <div class = "blogPost">
-            <h1>{{$post->title}}</h1>
-            @if(!App\models\user::find($post->user_id))
-                <p class = "author"> By: [Deleted]</p>
-            @else
-                <p class = "author">By: {{ App\models\user::find($post->user_id)->username }}</p>
-            @endif
-
-            <p class = "content">{{$post->content}}</p>
-            <p class = "likes">{{$post->likes}}</p>
-
-            {{ $post->likes }} likes
-
-
-            <form action="post/{{ $post->id }}/like" method="POST">
-                @csrf
-                @method('patch')
-                <input type="hidden" name="post_id" value="{{ $post->id }}">
-                <input type="hidden" name = "user_id" value="{{$user->id}}">
-                <button type="submit">Like</button>
-            </form>
-
+            <div class = "blogPostHeader">
+                <h1>{{$post->title}}</h1>
+                <p class = "content">{{$post->content}}</p>
+                <p class = "likes">
+                    {{ $post->likes }} likes
+                </p>
+            </div>
+            <div class = "blogPostInfo">
+                @if(!App\models\user::find($post->user_id))
+                    <p class = "author"> By: [Deleted]</p>
+                @else
+                    <p class = "author">By: {{ App\models\user::find($post->user_id)->username }}</p>
+                    <p class = "timestamp">{{ $post->created_at->diffForHumans() }}</p>
+                @endif
+                <div class="like">
+                    <form action="post/{{ $post->id }}/like" method="POST">
+                        @csrf
+                        @method('patch')
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
+                        <input type="hidden" name = "user_id" value="{{$user->id}}">
+                        <input type="hidden" name = "sort" value = {{$sort}}>
+                        <button type="submit">Like</button>
+                    </form>
+                </div>
+            </div>
         </div>
         @endforeach
     </div>

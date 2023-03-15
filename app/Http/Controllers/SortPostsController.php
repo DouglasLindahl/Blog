@@ -13,24 +13,31 @@ class SortPostsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $blogPosts = BlogPost::orderByDesc('created_at')->get();
-        if ($request["author"] != null) {
-            if ($request["newest"] == "new") {
-                $blogPosts = BlogPost::join('users', 'blog_posts.user_id', '=', 'users.id')
-                    ->where('users.username', 'like', '%' . $request["author"] . '%')
-                    ->orderBy('blog_posts.created_at', 'desc')->get();
-            } else if ($request["newest"] == "old") {
-                $blogPosts = BlogPost::join('users', 'blog_posts.user_id', '=', 'users.id')
-                    ->where('users.username', 'like', '%' . $request["author"] . '%')
-                    ->orderBy('blog_posts.created_at', 'asc')->get();
-            }
-        } else {
-            if ($request["newest"] == "new") {
-                $blogPosts = BlogPost::orderBy('created_at', 'desc')->get();
-            } else if ($request["newest"] == "old") {
-                $blogPosts = BlogPost::orderBy('created_at', 'asc')->get();
-            }
+        $blogPosts = BlogPost::query();
+
+        // Apply search filter
+        if ($request->search) {
+            $blogPosts->where('title', 'LIKE', '%' . $request->search . '%')
+                ->orWhere('content', 'LIKE', '%' . $request->search . '%');
         }
+
+        // Apply author filter
+        if ($request->author) {
+            $blogPosts->join('users', 'blog_posts.user_id', '=', 'users.id')
+                ->where('users.username', 'LIKE', '%' . $request->author . '%');
+        }
+
+        // Apply sorting preference
+        if ($request->newest == 'new') {
+            $blogPosts->orderByDesc('blog_posts.created_at');
+        } else {
+            $blogPosts->orderBy('blog_posts.created_at');
+        }
+
+        // Fetch the blog posts from the database
+        $blogPosts = $blogPosts->select('blog_posts.*')->get();
+
+        // Return the sorted blog posts to the view
         return view('dashboard', ['sort' => $blogPosts]);
     }
 }

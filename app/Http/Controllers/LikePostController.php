@@ -12,10 +12,10 @@ class LikePostController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(BlogPost $blogPost, Likes $likes, Request $request)
+    public function __invoke(BlogPost $blogPost, Request $request)
     {
-        $like = Likes::where('user_id', 'like', $request->user_id)
-            ->where('post_id', 'like', $request->post_id)
+        $like = Likes::where('user_id', '=', $request->user_id)
+            ->where('post_id', '=', $request->post_id)
             ->first();
 
         if ($like) {
